@@ -1,0 +1,31 @@
+# Rust binary, build, and dependency directories
+/target/
+Cargo.lock
+**/*.rs.bk
+
+# Editor and IDE specific files
+.vscode/
+.idea/
+*.swp
+*~
+*.bak
+*.rej
+*_flymake.*
+
+# Compiled files
+*.rs.gch
+*.rmeta
+
+# Environment files
+.env
+.env.*
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# macOS specific files
+.DS_Store
+.AppleDouble
+.LSOverride
+
