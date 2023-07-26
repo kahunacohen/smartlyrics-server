@@ -119,29 +119,48 @@ components:
     Song:
       type: object
       properties:
-        id:
-          type: integer
-        title:
+        album:
           type: string
-        author:
+        artist:
           type: string
-        publicationYear:
-          type: integer
         capo:
+          type: integer
+        composer:
+          type: string
+        copyright:
+          type: string
+        genre:
+          type: string
+        id:
           type: integer
         key:
           string
+        meta:
+          type: string
+        title:
+          type: string
+        year:
+          integer
     NewSong:
       type: object
       properties:
-   title:
-      type: string
-      author:
-        type: string
-      publicationYear:
-        type: integer
-      capo:
-        type: integer
-      key:
-        type: string
-      
+        album:
+          type: string
+        artist:
+          type: string
+        capo:
+          type: integer
+        composer:
+          type: string
+        copyright:
+          type: string
+        genre:
+          type: string
+        key:
+          string
+        meta:
+          type: string
+        title:
+          type: string
+        year:
+          integer
