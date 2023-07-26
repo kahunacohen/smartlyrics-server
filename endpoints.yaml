@@ -20,17 +20,45 @@ paths:
                 items:
                   $ref: '#/components/schemas/Song'
     post:
-      summary: Add a new book
-      operationId: addBook
+      summary: Add a new song
+      operationId: addSong
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/NewBook'
+              $ref: '#/components/schemas/NewSong'
       responses:
         '201':
-          description: Book added successfully
+          description: Song added successfully
+        '400':
+          description: Invalid request payload
+    put:
+      summary: update a song
+      operationId: updateSong
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewSong'
+      responses:
+        '201':
+          description: Song added successfully
+        '400':
+          description: Invalid request payload
+    delete:
+      summary: delete a song
+      operationId: deleteSong
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewSong'
+      responses:
+        '201':
+          description: Song added successfully
         '400':
           description: Invalid request payload
   /books/{id}:
@@ -103,12 +131,17 @@ components:
           type: integer
         key:
           string
-    NewBook:
+    NewSong:
       type: object
       properties:
-        title:
-          type: string
-        author:
-          type: string
-        publicationYear:
-          type: integer
+   title:
+      type: string
+      author:
+        type: string
+      publicationYear:
+        type: integer
+      capo:
+        type: integer
+      key:
+        type: string
+      
