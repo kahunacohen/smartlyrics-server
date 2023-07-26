@@ -1,0 +1,110 @@
+openapi: 3.0.3
+info:
+  title: Bookstore API
+  version: 1.0.0
+  description: API for managing books in a bookstore
+servers:
+  - url: http://localhost:8000
+paths:
+  /books:
+    get:
+      summary: Get all books
+      operationId: getAllBooks
+      responses:
+        '200':
+          description: List of books
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+    post:
+      summary: Add a new book
+      operationId: addBook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewBook'
+      responses:
+        '201':
+          description: Book added successfully
+        '400':
+          description: Invalid request payload
+  /books/{id}:
+    get:
+      summary: Get a book by ID
+      operationId: getBookById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Book details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+        '404':
+          description: Book not found
+    put:
+      summary: Update a book by ID
+      operationId: updateBookById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+      responses:
+        '200':
+          description: Book updated successfully
+        '404':
+          description: Book not found
+    delete:
+      summary: Delete a book by ID
+      operationId: deleteBookById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Book deleted successfully
+        '404':
+          description: Book not found
+components:
+  schemas:
+    Book:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        author:
+          type: string
+        publicationYear:
+          type: integer
+    NewBook:
+      type: object
+      properties:
+        title:
+          type: string
+        author:
+          type: string
+        publicationYear:
+          type: integer
