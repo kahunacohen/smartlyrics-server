@@ -1,24 +1,24 @@
 openapi: 3.0.3
 info:
-  title: Bookstore API
+  title: Smartlyrics API
   version: 1.0.0
-  description: API for managing books in a bookstore
+  description: API for managing song books for groups of players
 servers:
   - url: http://localhost:8000
 paths:
-  /books:
+  /{groupId}/songs/:
     get:
-      summary: Get all books
-      operationId: getAllBooks
+      summary: Get all songs for a group
+      operationId: getAllSongs
       responses:
         '200':
-          description: List of books
+          description: List of songs
           content:
             application/json:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Book'
+                  $ref: '#/components/schemas/Song'
     post:
       summary: Add a new book
       operationId: addBook
@@ -88,7 +88,7 @@ paths:
           description: Book not found
 components:
   schemas:
-    Book:
+    Song:
       type: object
       properties:
         id:
@@ -99,6 +99,10 @@ components:
           type: string
         publicationYear:
           type: integer
+        capo:
+          type: integer
+        key:
+          string
     NewBook:
       type: object
       properties:
